@@ -7,8 +7,9 @@ public class Pet implements Serializable {
 	public String petType;
 
 	public static void main (String[] args)
+	{
 		new Pet();
-
+	}
 }
 
 public Pet(){
