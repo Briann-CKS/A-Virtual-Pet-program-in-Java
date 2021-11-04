@@ -3,7 +3,5 @@ public interface GenAttribute {
 
 	public string GetHunger();
 	public void setHunger();
-
-
-
+	
 }
