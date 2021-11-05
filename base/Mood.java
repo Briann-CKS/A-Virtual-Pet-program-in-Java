@@ -1,4 +1,4 @@
-public class Mood extends GenAttributes {
+public class Mood extends Attribute {
 	
 	public static final int sad = 0;
 	public static final int moody = 1;

@@ -1,4 +1,4 @@
-public class Hunger extends Attributes
+public class Hunger extends Attribute
 {
 	public static final int famished = 0;
 	public static final int content = 1;
@@ -90,7 +90,7 @@ public class Hunger extends Attributes
 
 		else
 		{
-			strM = "Unknown";
+			strH = "Unknown";
 		}
 		
 		return strH;
