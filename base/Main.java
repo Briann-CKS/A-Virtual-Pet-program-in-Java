@@ -2,9 +2,16 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Main implements Serializable {
+	
 	public String name;
 	public int age;
 	public int type;
+
+	public static Dog[] dogs = new Dog [10];
+	public static Cat[] cats = new Cat [10];
+
+	public static int dogNum = 0;
+	public static int catNum = 0;
 
 	public static void main (String[] args)
 	{
