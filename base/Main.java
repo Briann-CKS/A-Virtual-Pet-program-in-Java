@@ -12,6 +12,8 @@ public class Main implements Serializable {
 
 	public static int dogNum = 0;
 	public static int catNum = 0;
+	public static int totdogNum = 0;
+	public static int totcatNum = 0;
 
 	public static void main (String[] args)
 	{
@@ -27,10 +29,21 @@ public Main(){
 
 public void loadPet(){
 	try{
-	FileInputStream pet_file = new FileInputStream ("Pet.dat");
-	ObjectInputStream inputP = new ObjectInputStream(pet_file);
+	FileInputStream dog_file = new FileInputStream ("Dog.dat");
+	ObjectInputStream inputD = new ObjectInputStream(dog_file);
 	
-	//Pet pet = (Pet) inputP.readObject();
+	boolean keep_going = true;
+	while (keep_going)
+	{
+		Dog[dogNum] = (Dog) inputD.readObject();
+		if(Dog[dogNum] == null)
+		{
+			keep_going = false;
+			break;
+		}
+		totdogNum++;
+		dogNum++;
+	}			
 
 	inputP.close();
 	} catch (IOException e)
@@ -87,4 +100,26 @@ public void main_menu(){
 			name = Pname.nextLine();
 			
 		}
+
+
+
 }
+
+public static void viewDogInfo (int i)
+{
+	int moodValue = Dog[i].m.getMood();
+	int hungerValue = Dog[i].h.getHunger();
+
+	System.out.println ("Your dog info\n" + i+1 + ". " + Dog[i].getName() + "\nType: " + Dog[i].getType() + "\nGender: " + Dog[i].getGender() +"\nCurrent Mood Status: " + Dog[i].m.getString(moodValue) + "\nCurrent Hunger Status: " + Dog[i].h.getString(hungerValue) + "\n";
+
+}
+
+public static void viewCatInfo (int i)
+{
+	int moodValue = Cat[i].m.getMood();
+        int hungerValue = Cat[i].h.getHunger();
+
+        System.out.println ("Your cat info\n" + i+1 + ". " + Cat[i].getName() + "\nType: " + Cat[i].getType() + "\nGender: " + Cat[i].getGender() +"\nCurrent Mood Status: " + Cat[i].m.getString(moodValue) + "\nCurrent Hunger Status: " + Cat[i].h.getString(hungerValue) + "\n";
+
+}
+

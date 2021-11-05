@@ -104,5 +104,19 @@ public class Mood extends Attribute {
 
 		return strM;
 	}
+
+	public void decreaseHunger(){
+	}
+
+	public void increaseHunger(){
+	}
+
+	public void setHunger (int num){
+	}
+
+	public int getHunger(){
+		return 0;
+	}
 }
+
 

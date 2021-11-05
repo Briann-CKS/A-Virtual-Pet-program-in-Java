@@ -3,9 +3,9 @@ import java.io.*;
 
 public class Cat extends Pet implements java.io.Serializable
 {
-	public String CatName = new String("");
-	public String CatType = new String("");
-	public String CatGender = new String ("");
+	public String catName = new String("");
+	public String catType = new String("");
+	public String catGender = new String ("");
 
 	public static void main (String[] args)
 	{
@@ -94,7 +94,7 @@ public class Cat extends Pet implements java.io.Serializable
 
 	public String getType ()
 	{
-		return catType();
+		return catType;
 	}
 
 	public void setType (String typ)
@@ -114,7 +114,7 @@ public class Cat extends Pet implements java.io.Serializable
 
 	public void insertData (String nam, String typ, String gen)
 	{
-		catName = name;
+		catName = nam;
 		catType = typ;
 		catGender = gen;
 	}

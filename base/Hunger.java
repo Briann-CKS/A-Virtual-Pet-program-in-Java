@@ -94,5 +94,18 @@ public class Hunger extends Attribute
 		}
 		
 		return strH;
+	}
+
+	public void increaseMood (){
+	}
+
+	public void decreaseMood(){
+	}
+
+	public void setMood(int num){
+	}
+
+	public int getMood(){
+		return 0;
 	}		
 }

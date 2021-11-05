@@ -94,7 +94,7 @@ public class Dog extends Pet implements java.io.Serializable
 
 	public String getType ()
 	{
-		return dogType();
+		return dogType;
 	}
 
 	public void setType (String typ)
@@ -114,7 +114,7 @@ public class Dog extends Pet implements java.io.Serializable
 
 	public void insertData (String nam, String typ, String gen)
 	{
-		dogName = name;
+		dogName = nam;
 		dogType = typ;
 		dogGender = gen;
 	}
