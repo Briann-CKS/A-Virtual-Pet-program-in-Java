@@ -1,4 +1,6 @@
-public class Mood extends Attribute {
+import java.io.*;
+
+public class Mood extends Attribute implements Serializable {
 	
 	public static final int sad = 0;
 	public static final int moody = 1;
@@ -39,7 +41,7 @@ public class Mood extends Attribute {
 
 		if (mood == 0 || mood == 1 || mood == 2 || mood == 3 || mood == 4)
 		{
-			System.out.println ("\n Your pet is currently " + getMoodString(mood) + "\n");
+			System.out.println ("\nYour pet is currently " + getMoodString(mood) + "\n");
 		}
 		else 
 		{
@@ -60,7 +62,7 @@ public class Mood extends Attribute {
 		
 		if (mood == 0 || mood == 1 || mood == 2 || mood == 3 || mood == 4)
                 {
-                        System.out.println ("\n Your pet is currently " + getMoodString(mood) + "\n");
+                        System.out.println ("\nYour pet is currently " + getMoodString(mood) + "\n");
                 }
                 else
                 {

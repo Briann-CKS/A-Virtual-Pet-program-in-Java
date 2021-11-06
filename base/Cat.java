@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.io.*;
 
-public class Cat extends Pet implements java.io.Serializable
+public class Cat extends Pet implements Serializable
 {
 	public String catName = new String("");
 	public String catType = new String("");
@@ -56,6 +56,7 @@ public class Cat extends Pet implements java.io.Serializable
 
 	public void play()
 	{
+		System.out.println("Meoww Meoww");
 		m.increaseMood();
 		h.increaseHunger();
 	}
@@ -68,6 +69,7 @@ public class Cat extends Pet implements java.io.Serializable
 
 	public void clean ()
 	{
+		System.out.println("Your cat is now clean");
 		m.increaseMood();
 	}
 
@@ -78,6 +80,7 @@ public class Cat extends Pet implements java.io.Serializable
 
 	public void feed ()
 	{
+		System.out.println("Yumm Yumm");
 		m.increaseMood();
 		h.decreaseHunger();
 	}

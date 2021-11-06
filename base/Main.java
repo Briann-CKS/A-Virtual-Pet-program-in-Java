@@ -17,9 +17,9 @@ public class Main implements Serializable {
 
 	public static void main (String[] args)
 	{
-		new Main();
-		main_menu();
-		savePet();
+		Main user = new Main();
+		user.main_menu();
+		user.savePet();
 	}
 
 	public Main()
@@ -36,8 +36,8 @@ public class Main implements Serializable {
 	
 		while (keep_going)
 		{
-			Dog[dogNum] = (Dog) inputD.readObject();
-			if(Dog[dogNum] == null)
+			dogs[dogNum] = (Dog) inputD.readObject();
+			if(dogs[dogNum] == null)
 			{
 				keep_going = false;
 				break;
@@ -60,8 +60,8 @@ public class Main implements Serializable {
 
         	while (keep_going)
         	{
-                	Cat[catNum] = (Cat) inputC.readObject();
-                	if(Cat[catNum] == null)
+                	cats[catNum] = (Cat) inputC.readObject();
+                	if(cats[catNum] == null)
                 	{
                 	        keep_going = false;
                         	break;
@@ -71,7 +71,7 @@ public class Main implements Serializable {
         	}
 
         	cat_file.close();
- 	       inputC.close();
+ 	        inputC.close();
         	} catch (IOException e){
                 	System.out.println(e.getMessage());
         	} catch (ClassNotFoundException e){
@@ -86,7 +86,8 @@ public class Main implements Serializable {
 		ObjectOutputStream outputD = new ObjectOutputStream(dog_file);
 		for (int i = 0; i<totdogNum; i++)
 		{
-			outputD.writeObject(Dog[i]);
+			viewDogInfo(i);
+			outputD.writeObject(dogs[i]);
 		}
 		dog_file.close();
 		outputD.close();
@@ -100,7 +101,7 @@ public class Main implements Serializable {
                 ObjectOutputStream outputC = new ObjectOutputStream(cat_file);
                 for (int i = 0; i<totcatNum; i++)
                 {       
-                        outputC.writeObject(Cat[i]);
+                        outputC.writeObject(cats[i]);
                 }
                 cat_file.close();
                 outputC.close();
@@ -147,8 +148,9 @@ public class Main implements Serializable {
 						System.out.println ("Please enter the gender of your dog:\n");
 						gender = in.nextLine();
 
-						Dog[dogNum].insertData(name, type, gender);
-
+						dogs[dogNum] = new Dog();
+						dogs[dogNum].insertData(name, type, gender);	
+	
 						dogNum++;
 						totdogNum++;
 					}
@@ -170,8 +172,8 @@ public class Main implements Serializable {
 	
         	                                System.out.println ("Please enter the gender of your cat:\n");
         	                                gender = in.nextLine();
-	
-	                                        Cat[catNum].insertData(name, type, gender);
+						cats[catNum] = new Cat();	
+	                                        cats[catNum].insertData(name, type, gender);
 	
         	                                catNum++;
         	                                totcatNum++;
@@ -192,7 +194,7 @@ public class Main implements Serializable {
 					System.out.println("Please choose a dog or press 0 to exit\n");			
 					for (int i = 0; i<totdogNum; i++)
 					{
-						viewdogInfo(i);
+						viewDogInfo(i);
 					}
 					Scanner inp = new Scanner (System.in);
 					int pick = inp.nextInt();
@@ -209,19 +211,19 @@ public class Main implements Serializable {
 							System.out.println("Enter Choice:\n1. Play\n2.Ignore\n3. Clean \n4. Sleep\n5. Feed\n6.Exit");
 							subch = inp.nextInt();
 							if(subch == 1){
-								Dog[pick - 1].play();
+								dogs[pick - 1].play();
 							}
 							else if(subch == 2){
-								Dog[pick - 1].ignore();
+								dogs[pick - 1].ignore();
 							}
 							else if(subch == 3){
-								Dog[pick - 1].clean();
+								dogs[pick - 1].clean();
 							}
 							else if(subch == 4){
-        	                                                Dog[pick - 1].sleep();
+        	                                                dogs[pick - 1].sleep();
         	                                        }
 							else if(subch == 5){
-        	                                                Dog[pick - 1].feed();
+        	                                                dogs[pick - 1].feed();
         	                                        }
 							else if(subch == 6)
 							{
@@ -250,7 +252,7 @@ public class Main implements Serializable {
                 	                System.out.println("Please choose a cat or press 0 to exit\n");
                 	                for (int i = 0; i<totcatNum; i++)
                 	                {
-                	                        viewcatInfo(i);
+                	                        viewCatInfo(i);
                 	                }
                 	                Scanner inp = new Scanner (System.in);
                 	                int pick = inp.nextInt();
@@ -267,19 +269,19 @@ public class Main implements Serializable {
                 	                                System.out.println("Enter Choice:\n1. Play\n2.Ignore\n3. Clean \n4. Sleep\n5. Feed\n6.Exit");
                 	                                subch = inp.nextInt();
                 	                                if(subch == 1){
-                	                                        Cat[pick - 1].play();
+                	                                        cats[pick - 1].play();
                 	                                }
                 	                                else if(subch == 2){
-                	                                        Cat[pick - 1].ignore();
+                	                                        cats[pick - 1].ignore();
                 	                                }
                 	                                else if(subch == 3){
-               		                                        Cat[pick - 1].clean();
+               		                                        cats[pick - 1].clean();
                	                                	}
                 	                                else if(subch == 4){
-                                                    	    Cat[pick - 1].sleep();
+                                                  	    	cats[pick - 1].sleep();
                                                 	}
                                                 	else if(subch == 5){
-                                                	        Cat[pick - 1].feed();
+                                                	        cats[pick - 1].feed();
                                                 	}
                                                 	else if(subch == 6)
                                                		{
@@ -314,7 +316,7 @@ public class Main implements Serializable {
 				System.out.println("All the cats: \n");
         	                for(int i = 0; i<totcatNum; i++)
         	                {
-        	                        viewcatInfo(i);
+        	                        viewCatInfo(i);
                         	}
 			}
 
@@ -329,23 +331,24 @@ public class Main implements Serializable {
 				System.out.println ("Not a valid choice!");
 			}
 
+		}
 	}
 
 	public static void viewDogInfo (int i)
 	{
-		int moodValue = Dog[i].m.getMood();
-		int hungerValue = Dog[i].h.getHunger();
+		int moodValue = dogs[i].m.getMood();
+		int hungerValue = dogs[i].h.getHunger();
 	
-		System.out.println ("Your dog info\n" + i+1 + ". " + Dog[i].getName() + "\nType: " + Dog[i].getType() + "\nGender: " + Dog[i].getGender() +"\nCurrent Mood Status: " + Dog[i].m.getString(moodValue) + "\nCurrent Hunger Status: " + Dog[i].h.getString(hungerValue) + "\n");
+		System.out.println (i+1 + ". " + dogs[i].getName() + "\nType: " + dogs[i].getType() + "\nGender: " + dogs[i].getGender() +"\nCurrent Mood Status: " + dogs[i].m.getMoodString(moodValue) + "\nCurrent Hunger Status: " + dogs[i].h.getHungerString(hungerValue) + "\n");
 
 	}
 
 	public static void viewCatInfo (int i)
 	{	
-		int moodValue = Cat[i].m.getMood();
-        	int hungerValue = Cat[i].h.getHunger();
+		int moodValue = cats[i].m.getMood();
+        	int hungerValue = cats[i].h.getHunger();
 
-        	System.out.println ("Your cat info\n" + i+1 + ". " + Cat[i].getName() + "\nType: " + Cat[i].getType() + "\nGender: " + Cat[i].getGender() +"\nCurrent Mood Status: " + Cat[i].m.getString(moodValue) + "\nCurrent Hunger Status: " + Cat[i].h.getString(hungerValue) + "\n");
+        	System.out.println (i+1 + ". " + cats[i].getName() + "\nType: " + cats[i].getType() + "\nGender: " + cats[i].getGender() +"\nCurrent Mood Status: " + cats[i].m.getMoodString(moodValue) + "\nCurrent Hunger Status: " + cats[i].h.getHungerString(hungerValue) + "\n");
 
 	}
 }

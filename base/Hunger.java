@@ -1,4 +1,6 @@
-public class Hunger extends Attribute
+import java.io.*;
+
+public class Hunger extends Attribute implements Serializable
 {
 	public static final int famished = 0;
 	public static final int content = 1;
@@ -37,7 +39,7 @@ public class Hunger extends Attribute
 		
 		if (hunger == 0 || hunger == 1 || hunger == 2)
                 {       
-                        System.out.println ("\n Your pet is currently " + getHungerString(hunger) + "\n");
+                        System.out.println ("\nYour pet is currently " + getHungerString(hunger) + "\n");
                 }
                 else
                 {       
@@ -60,7 +62,7 @@ public class Hunger extends Attribute
 		
 		if (hunger == 0 || hunger == 1 || hunger == 2)
                 {
-			System.out.println ("\n Your pet is currently " + getHungerString(hunger) + "\n");
+			System.out.println ("\nYour pet is currently " + getHungerString(hunger) + "\n");
                 }
                 else
                 {
