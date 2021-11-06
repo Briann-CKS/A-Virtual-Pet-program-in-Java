@@ -86,7 +86,6 @@ public class Main implements Serializable {
 		ObjectOutputStream outputD = new ObjectOutputStream(dog_file);
 		for (int i = 0; i<totdogNum; i++)
 		{
-			viewDogInfo(i);
 			outputD.writeObject(dogs[i]);
 		}
 		dog_file.close();
